@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1741100229477
+current_stage: None
+description: null
+last_updated_timestamp: 1741100229477
+name: Naive Bayes
+run_id: 9aa32260d94f4f2b9460935bb4b5bfeb
+run_link: null
+source: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/9aa32260d94f4f2b9460935bb4b5bfeb/artifacts/Naive
+  Bayes
+status: READY
+status_message: null
+storage_location: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/9aa32260d94f4f2b9460935bb4b5bfeb/artifacts/Naive
+  Bayes
+user_id: null
+version: 1

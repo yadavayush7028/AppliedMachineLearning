@@ -1,0 +1,6 @@
+[core]
+    no_scm = True
+    remote = gdrive_remote
+['remote "gdrive_remote"']
+    url = gdrive://1lqWMn1zwrachgWtH82xSFnOsYZsoiDgU
+    gdrive_use_service_account = true

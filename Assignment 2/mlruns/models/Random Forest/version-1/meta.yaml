@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1741100238060
+current_stage: None
+description: null
+last_updated_timestamp: 1741100238060
+name: Random Forest
+run_id: e0818d0893af4377bacb08f5116dffe0
+run_link: null
+source: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/e0818d0893af4377bacb08f5116dffe0/artifacts/Random
+  Forest
+status: READY
+status_message: null
+storage_location: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/e0818d0893af4377bacb08f5116dffe0/artifacts/Random
+  Forest
+user_id: null
+version: 1

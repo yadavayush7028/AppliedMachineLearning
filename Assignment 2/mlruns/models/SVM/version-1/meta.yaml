@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1741100246628
+current_stage: None
+description: null
+last_updated_timestamp: 1741100246628
+name: SVM
+run_id: f17f6bb7347d41249da2240f6232d888
+run_link: null
+source: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/f17f6bb7347d41249da2240f6232d888/artifacts/SVM
+status: READY
+status_message: null
+storage_location: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/f17f6bb7347d41249da2240f6232d888/artifacts/SVM
+user_id: null
+version: 1

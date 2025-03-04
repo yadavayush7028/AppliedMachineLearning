@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/72ecf3cd227843d6911387a352d9f4fb/artifacts
+end_time: 1741100233678
+entry_point_name: ''
+experiment_id: '564598082826893658'
+lifecycle_stage: active
+run_id: 72ecf3cd227843d6911387a352d9f4fb
+run_name: Logistic Regression
+run_uuid: 72ecf3cd227843d6911387a352d9f4fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741100229507
+status: 3
+tags: []
+user_id: yadav

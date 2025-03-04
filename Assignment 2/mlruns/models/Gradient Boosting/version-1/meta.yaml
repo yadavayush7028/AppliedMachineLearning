@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1741100242352
+current_stage: None
+description: null
+last_updated_timestamp: 1741100242352
+name: Gradient Boosting
+run_id: fd68ce62f94847bdb67f866ad1d1efb5
+run_link: null
+source: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/fd68ce62f94847bdb67f866ad1d1efb5/artifacts/Gradient
+  Boosting
+status: READY
+status_message: null
+storage_location: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/fd68ce62f94847bdb67f866ad1d1efb5/artifacts/Gradient
+  Boosting
+user_id: null
+version: 1

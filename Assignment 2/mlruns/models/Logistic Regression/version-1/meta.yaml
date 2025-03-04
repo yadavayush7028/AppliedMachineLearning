@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1741100233653
+current_stage: None
+description: null
+last_updated_timestamp: 1741100233653
+name: Logistic Regression
+run_id: 72ecf3cd227843d6911387a352d9f4fb
+run_link: null
+source: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/72ecf3cd227843d6911387a352d9f4fb/artifacts/Logistic
+  Regression
+status: READY
+status_message: null
+storage_location: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/72ecf3cd227843d6911387a352d9f4fb/artifacts/Logistic
+  Regression
+user_id: null
+version: 1

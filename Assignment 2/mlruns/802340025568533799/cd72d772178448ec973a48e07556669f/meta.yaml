@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/802340025568533799/cd72d772178448ec973a48e07556669f/artifacts
+end_time: 1741100445738
+entry_point_name: ''
+experiment_id: '802340025568533799'
+lifecycle_stage: active
+run_id: cd72d772178448ec973a48e07556669f
+run_name: Gradient Boosting
+run_uuid: cd72d772178448ec973a48e07556669f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741100441583
+status: 3
+tags: []
+user_id: yadav

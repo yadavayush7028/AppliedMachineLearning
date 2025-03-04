@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/802340025568533799/a169130f347846f7a35341bf2e147366/artifacts
+end_time: 1741100450035
+entry_point_name: ''
+experiment_id: '802340025568533799'
+lifecycle_stage: active
+run_id: a169130f347846f7a35341bf2e147366
+run_name: SVM
+run_uuid: a169130f347846f7a35341bf2e147366
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741100445749
+status: 3
+tags: []
+user_id: yadav

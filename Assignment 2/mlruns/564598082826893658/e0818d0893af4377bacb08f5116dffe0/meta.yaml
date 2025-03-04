@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/CMI/SEM%204/App.%20ML/Assignment%201/AppliedMachineLearning/Assignment%202/mlruns/564598082826893658/e0818d0893af4377bacb08f5116dffe0/artifacts
+end_time: 1741100238092
+entry_point_name: ''
+experiment_id: '564598082826893658'
+lifecycle_stage: active
+run_id: e0818d0893af4377bacb08f5116dffe0
+run_name: Random Forest
+run_uuid: e0818d0893af4377bacb08f5116dffe0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741100233685
+status: 3
+tags: []
+user_id: yadav

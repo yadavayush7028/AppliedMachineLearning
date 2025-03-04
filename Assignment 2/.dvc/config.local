@@ -1,0 +1,2 @@
+['remote "gdrive_remote"']
+    gdrive_service_account_json_file_path = ../maps-391110-98fa3766ee6f.json
