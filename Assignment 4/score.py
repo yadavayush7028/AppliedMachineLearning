@@ -7,9 +7,9 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from scipy import sparse
 from scipy.sparse import load_npz
 
-bow_msgs = load_npz('sms+spam+collection/bag_of_words.npz')
+bow_msgs = load_npz('bag_of_words.npz')
 
-with open('sms+spam+collection/bag_of_words.pkl','rb') as f:
+with open('bag_of_words.pkl','rb') as f:
     bag_of_words = pickle.load(f)
 
 tfidf_transformer = TfidfTransformer().fit(bow_msgs)
