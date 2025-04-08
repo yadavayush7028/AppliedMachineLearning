@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            display: none;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .prediction {
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .prediction-spam {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .prediction-ham {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .loading {
+            text-align: center;
+            display: none;
+            margin-top: 15px;
+        }
+        .spinnerdiv {
+            margin: 10px auto;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: none;
+        }
+        .examples {
+            margin-top: 20px;
+        }
+        .example-btn {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .example-btn:hover {
+            background-color: #dde4e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spam Classifier</h1>
+    
+    <div class="container">
+        <label for="text-input">Enter text to classify:</label>
+        <textarea id="text-input" placeholder="Type or paste text here..."></textarea>
+        
+        <label for="threshold">Classification Threshold (0-1):</label>
+        <input type="number" id="threshold" min="0" max="1" step="0.1" value="0.5">
+        
+        <button id="classify-btn">Classify Text</button>
+        
+        <div class="examples">
+            <button class="example-btn" data-example="spam">Load Spam Example</button>
+            <button class="example-btn" data-example="ham">Load Non-Spam Example</button>
+        </div>
+        
+        <div id="loading" class="loading">
+            <div class="spinnerdiv"></div>
+            <p>Analyzing text...</p>
+        </div>
+        
+        <div id="error" class="error"></div>
+        
+        <div id="result">
+            <div class="result-item">
+                <span class="label">Classification:</span>
+                <span id="prediction-text" class="prediction"></span>
+            </div>
+            <div class="result-item">
+                <span class="label">Confidence Score:</span>
+                <span id="propensity"></span>
+            </div>
+            <div class="result-item">
+                <span class="label">Score Interpretation:</span>
+                <span id="interpretation"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const classifyBtn = document.getElementById('classify-btn');
+            const textInput = document.getElementById('text-input');
+            const thresholdInput = document.getElementById('threshold');
+            const resultDiv = document.getElementById('result');
+            const predictionText = document.getElementById('prediction-text');
+            const propensitySpan = document.getElementById('propensity');
+            const interpretationSpan = document.getElementById('interpretation');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            
+            const examples = {
+                spam: "URGENT: You've WON $10,000,000! Click here to claim your prize now! Limited time offer. Send your details to claim@example.com",
+                ham: "Hi team, I'll be in the office today. Let's discuss the project progress at 2pm. Please bring your reports."
+            };
+            
+            exampleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const exampleType = this.getAttribute('data-example');
+                    textInput.value = examples[exampleType];
+                });
+            });
+            
+            classifyBtn.addEventListener('click', function() {
+                const text = textInput.value.trim();
+                const threshold = parseFloat(thresholdInput.value);
+                
+                if (!text) {
+                    showError("Please enter some text to classify.");
+                    return;
+                }
+                
+                if (isNaN(threshold) || threshold < 0 || threshold > 1) {
+                    showError("Threshold must be a number between 0 and 1.");
+                    return;
+                }
+                
+                // Hide previous results and errors
+                resultDiv.style.display = 'none';
+                errorDiv.style.display = 'none';
+                
+                // Show loading spinner
+                loadingDiv.style.display = 'block';
+                
+                // Send request to API
+                fetch('/score', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        threshold: threshold
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Server returned an error');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Hide loading spinner
+                    loadingDiv.style.display = 'none';
+                    
+                    // Show results
+                    resultDiv.style.display = 'block';
+                    
+                    // Update prediction text and class
+                    if (data.prediction === 1) {
+                        predictionText.textContent = 'SPAM';
+                        predictionText.className = 'prediction prediction-spam';
+                    } else {
+                        predictionText.textContent = 'NOT SPAM';
+                        predictionText.className = 'prediction prediction-ham';
+                    }
+                    
+                    // Update propensity score (as percentage)
+                    const scorePercent = (data.propensity * 100).toFixed(2);
+                    propensitySpan.textContent = `${scorePercent}%`;
+                    
+                    // Provide interpretation
+                    let interpretation;
+                    if (data.propensity >= 0.9) {
+                        interpretation = "Very likely spam";
+                    } else if (data.propensity >= 0.7) {
+                        interpretation = "Likely spam";
+                    } else if (data.propensity >= 0.3) {
+                        interpretation = "Uncertain";
+                    } else if (data.propensity >= 0.1) {
+                        interpretation = "Likely not spam";
+                    } else {
+                        interpretation = "Very likely not spam";
+                    }
+                    interpretationSpan.textContent = interpretation;
+                })
+                .catch(error => {
+                    // Hide loading spinner
+                    loadingDiv.style.display = 'none';
+                    
+                    // Show error message
+                    showError("Error: " + error.message);
+                });
+            });
+            
+            function showError(message) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
